@@ -7,9 +7,10 @@ It'll skip playing the sound if it's played in the last 5 minutes to prevent
 things from getting too annoying.
 
 I mostly wrote this as a joke. I don't recommend actually installing it on any
-super critical systems. Because of it's very nature as a sudo plugin _it can
-break sudo_ if installation somehow goes wrong or you make a syntax error
-somewhere. Obviously, use at your own risk. There are no guarantees. It might
+super critical systems. In fact, you probably shouldn't use it on _any_ system.
+Because of it's very nature as a sudo plugin **_it can break sudo_** if
+installation somehow goes wrong or you make a syntax error somewhere while
+editing it. Obviously, use at your own risk. There are no guarantees. It might
 kill your cat.
 
 ## Installing
@@ -18,7 +19,7 @@ Because this is a sudo plugin, **_it has the potential to break sudo_** if
 something goes wrong with the installation. You should open a root shell with
 `sudo su -` BEFORE INSTALLATION and then CHECK THAT SUDO WORKS after
 installation in a second terminal window (`sudo echo test`). This will let you
-rollback the changes if you have somehow messed sudo up.
+rollback the changes in the first root shell if you have somehow messed sudo up.
 
 **Before installing, install `ffmpeg` via your package manager:**
 
@@ -42,6 +43,10 @@ make install
 sudo echo "Authority."
 # if that didn't work, immediately uninstall with "sudo make uninstall"
 ```
+
+After installation, any `sudo` command should trigger the line. If you want to
+have it trigger the line again even if it already played in the last 5 minutes,
+just delete the `~/.authority-last-play` file in your home directory.
 
 ## Uninstall
 
